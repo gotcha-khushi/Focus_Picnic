@@ -1,0 +1,60 @@
+.landing-page {
+  min-height: 100vh;
+  background-image: url("/assets/landing page bg.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+}
+
+.landing-logo {
+  position: absolute;
+  top: 30px;
+  left: 30px;
+  width: 330px;
+  height: auto;
+  animation: logo-float 3s ease-in-out infinite;
+}
+
+.cat {
+  position: absolute;
+  left: 105px;
+  bottom: 26px;
+  width: 180px;
+  height: 146px;
+  padding: 0;
+  border: 0;
+  cursor: pointer;
+  background-image: url("/assets/cat down blinking sprite.png");
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-size: 200% 100%;
+}
+
+.cat-down-blink {
+  animation: cat-blink 2.8s steps(1) infinite;
+}
+
+@keyframes logo-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(10px);
+  }
+}
+
+@keyframes cat-blink {
+  0%,
+  86%,
+  100% {
+    background-position: 0 0;
+  }
+
+  90%,
+  94% {
+    background-position: 100% 0;
+  }
+}
