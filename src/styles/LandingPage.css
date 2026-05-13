@@ -1,5 +1,8 @@
+@import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
+
 .landing-page {
   min-height: 100vh;
+  overflow: hidden;
   background-image: url("/assets/landing page bg.png");
   background-size: cover;
   background-position: center;
@@ -9,15 +12,189 @@
 
 .landing-logo {
   position: absolute;
-  top: 30px;
-  left: 30px;
-  width: 330px;
+  top: 60px;
+  left: 40px;
+  width: 300px;
   height: auto;
   animation: logo-float 3s ease-in-out infinite;
 }
 
+.sound-toggle {
+  position: absolute;
+  top: 18px;
+  left: 18px;
+  z-index: 10;
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+.sound-toggle:active {
+  transform: scale(0.94);
+}
+
+.sound-icon {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+  image-rendering: pixelated;
+  pointer-events: none;
+}
+
+.link-panel-shell {
+  font-family: "Press Start 2P", monospace;
+}
+
+.link-info-panel {
+  position: absolute;
+  top: 60px;
+  right: 290px;
+  width: 180px;
+  min-height: 600px;
+  padding: 8px 6px;
+  border: 3px solid #3c493f;
+  border-radius: 6px;
+  background: #507b58;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.16),
+    0 12px 26px rgba(25, 48, 41, 0.2);
+  color: #d9cfbd;
+}
+
+.navigatin {
+  display: flex;
+  flex-direction: column;
+  gap: 11px;
+}
+
+.link-panel-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 31px;
+  padding: 0;
+  border: 2px solid #3f463e;
+  border-radius: 5px;
+  color: #697d61;
+  background: #f3efcf;
+  box-shadow: inset 0 2px 0 rgba(255, 255, 255, 0.24);
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 12px;
+  line-height: 1;
+  text-align: center;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.link-panel-divider {
+  height: 2px;
+  margin: 14px 4px 10px;
+  background: #d9cfbd;
+  opacity: 0.92;
+}
+
+.link-panel-info {
+  text-align: center;
+}
+
+.link-panel-info h2 {
+  margin: 0 0 9px;
+  color: #ded1c3;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1.2;
+}
+
+.link-panel-info p {
+  margin: 0 0 9px;
+  color: #ded1c3;
+  font-size: 8px;
+  line-height: 1.15;
+}
+
+.panel-content-column {
+  display: contents;
+}
+
+.panel-box {
+  position: absolute;
+  right: 18px;
+  width: 254px;
+  box-sizing: border-box;
+  border: 2px solid #6f7d67;
+  border-radius: 5px;
+  background: #f3efcf;
+  color: #66805f;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.34);
+  overflow: hidden;
+}
+
+.status-box {
+  top: 60px;
+  height: 225px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 10px;
+}
+
+.status-box p,
+.more-info-box p,
+.more-info-box h2 {
+  margin: 0;
+  text-align: center;
+  font-weight: 400;
+}
+
+.status-box p {
+  font-size: 9px;
+  line-height: 1.25;
+}
+
+.image-box {
+  top: 305px;
+  height: 218px;
+  background:
+    linear-gradient(90deg, rgba(80, 123, 88, 0.14) 1px, transparent 1px),
+    linear-gradient(rgba(80, 123, 88, 0.14) 1px, transparent 1px),
+    #f3efcf;
+  background-size: 18px 18px;
+}
+
+.more-info-box {
+  top: 542px;
+  height: 138px;
+  padding: 9px 10px;
+}
+
+.more-info-box h2 {
+  margin-bottom: 13px;
+  font-size: 10px;
+  line-height: 1.1;
+}
+
+.more-info-box p {
+  margin-bottom: 7px;
+  font-size: 7px;
+  line-height: 1.15;
+}
+
+.more-info-divider {
+  height: 2px;
+  margin: 5px 2px 8px;
+  background: #66805f;
+}
+
 .cat {
   position: absolute;
+  z-index: 2;
   left: 105px;
   bottom: 26px;
   width: 180px;
@@ -25,6 +202,7 @@
   padding: 0;
   border: 0;
   cursor: pointer;
+  overflow: visible;
   background-image: url("/assets/cat down blinking sprite.png");
   background-color: transparent;
   background-repeat: no-repeat;
@@ -35,6 +213,19 @@
   animation: cat-blink 2.8s steps(1) infinite;
 }
 
+.sheet-music {
+  position: absolute;
+  left: 15px;
+  top: -88px;
+  width: 160px;
+  height: 120px;
+  background-image: url("/assets/sheet music.png");
+  background-repeat: no-repeat;
+  background-size: 400% 100%;
+  animation: sheet-music-play 850ms steps(1) infinite;
+  pointer-events: none;
+}
+
 @keyframes logo-float {
   0%,
   100% {
@@ -43,6 +234,81 @@
 
   50% {
     transform: translateY(10px);
+  }
+}
+
+@media (max-width: 760px) {
+  .link-info-panel {
+    top: 130px;
+    right: calc(100vw - 132px);
+    width: 116px;
+    min-height: 430px;
+  }
+
+  .link-panel-button {
+    min-height: 27px;
+    font-size: 9px;
+  }
+
+  .link-panel-info h2 {
+    font-size: 9px;
+  }
+
+  .link-panel-info p {
+    font-size: 7px;
+  }
+
+  .panel-content-column {
+    display: contents;
+  }
+
+  .panel-box {
+    right: 10px;
+    width: calc(100vw - 150px);
+    max-width: 230px;
+  }
+
+  .status-box {
+    top: 130px;
+    height: 64px;
+  }
+
+  .image-box {
+    top: 204px;
+    height: 190px;
+  }
+
+  .more-info-box {
+    top: 404px;
+    height: 126px;
+  }
+
+  .status-box p,
+  .more-info-box h2 {
+    font-size: 8px;
+  }
+
+  .more-info-box p {
+    font-size: 6px;
+  }
+}
+
+@keyframes sheet-music-play {
+  0% {
+    background-position: 0 0;
+  }
+
+  25% {
+    background-position: 33.333% 0;
+  }
+
+  50% {
+    background-position: 66.666% 0;
+  }
+
+  75%,
+  100% {
+    background-position: 100% 0;
   }
 }
 
