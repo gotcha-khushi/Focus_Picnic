@@ -13,7 +13,7 @@ function LandingPage() {
 
   useEffect(() => {
     const catSprite = new Image();
-    catSprite.src = "/assets/cat down blinking sprite.png";
+    catSprite.src = "/assets/cat blinking sprite.png";
     catSprite.onload = () => {
       const canvas = document.createElement("canvas");
       canvas.width = catSprite.width / 2;

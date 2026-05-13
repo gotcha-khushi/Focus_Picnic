@@ -203,7 +203,7 @@
   border: 0;
   cursor: pointer;
   overflow: visible;
-  background-image: url("/assets/cat down blinking sprite.png");
+  background-image: url("/assets/cat blinking sprite.png");
   background-color: transparent;
   background-repeat: no-repeat;
   background-size: 200% 100%;
