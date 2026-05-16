@@ -1,5 +1,13 @@
 @import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
 
+@font-face {
+  font-family: "RuneScape";
+  src: url("/assets/runescape_uf.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
 .landing-page {
   min-height: 100vh;
   overflow: hidden;
@@ -42,7 +50,7 @@
   width: 40px;
   height: 40px;
   object-fit: contain;
-  image-rendering: pixelated;
+  image-rendering: auto;
   pointer-events: none;
 }
 
@@ -53,23 +61,44 @@
 .link-info-panel {
   position: absolute;
   top: 60px;
-  right: 290px;
-  width: 180px;
+  right: 20px;
+  width: 250px;
   min-height: 600px;
-  padding: 8px 6px;
-  border: 3px solid #3c493f;
+  padding: 12px 10px;
+  border: 3px solid #9dcfd7;
   border-radius: 6px;
-  background: #507b58;
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.16),
-    0 12px 26px rgba(25, 48, 41, 0.2);
-  color: #d9cfbd;
+  background: rgba(222, 240, 230, 0.76);
+  box-shadow: 10px 10px 0 rgba(88, 139, 148, 0.2);
+  backdrop-filter: blur(1px);
+  color: #fffbea;
+}
+
+.nav-panel-clover {
+  display: block;
+  width: 100px;
+  height: auto;
+  margin: 2px auto 18px;
+  image-rendering: auto;
+  pointer-events: auto;
+  transform: scale(1);
+}
+
+.nav-panel-clover.is-animating {
+  animation: clover-hover-grow 220ms ease-out forwards;
+}
+
+.nav-panel-clover.is-returning {
+  animation: clover-hover-shrink 180ms ease-out forwards;
+}
+
+.nav-panel-clover.is-hovered {
+  transform: scale(1.04);
 }
 
 .navigatin {
   display: flex;
   flex-direction: column;
-  gap: 11px;
+  gap: 14px;
 }
 
 .link-panel-button {
@@ -77,26 +106,31 @@
   align-items: center;
   justify-content: center;
   width: 100%;
-  min-height: 31px;
-  padding: 0;
-  border: 2px solid #3f463e;
+  min-height: 42px;
+  padding: 0 10px;
+  border: 3px solid #9dcfd7;
   border-radius: 5px;
-  color: #697d61;
-  background: #f3efcf;
-  box-shadow: inset 0 2px 0 rgba(255, 255, 255, 0.24);
+  color: #6faeaa;
+  background: #fffbea;
+  box-shadow: 5px 5px 0 rgba(88, 139, 148, 0.16);
   cursor: pointer;
-  font-family: inherit;
-  font-size: 12px;
+  font-family: "RuneScape", "Press Start 2P", monospace;
+  font-size: 17px;
   line-height: 1;
+  letter-spacing: 1px;
   text-align: center;
-  text-decoration: underline;
-  text-underline-offset: 2px;
+  text-decoration: none;
+}
+
+.link-panel-button:active {
+  transform: translate(2px, 2px);
+  box-shadow: 3px 3px 0 rgba(88, 139, 148, 0.16);
 }
 
 .link-panel-divider {
   height: 2px;
   margin: 14px 4px 10px;
-  background: #d9cfbd;
+  background: #fffbea;
   opacity: 0.92;
 }
 
@@ -106,7 +140,7 @@
 
 .link-panel-info h2 {
   margin: 0 0 9px;
-  color: #ded1c3;
+  color: #fffbea;
   font-size: 12px;
   font-weight: 400;
   line-height: 1.2;
@@ -114,82 +148,9 @@
 
 .link-panel-info p {
   margin: 0 0 9px;
-  color: #ded1c3;
+  color: #fffbea;
   font-size: 8px;
   line-height: 1.15;
-}
-
-.panel-content-column {
-  display: contents;
-}
-
-.panel-box {
-  position: absolute;
-  right: 18px;
-  width: 254px;
-  box-sizing: border-box;
-  border: 2px solid #6f7d67;
-  border-radius: 5px;
-  background: #f3efcf;
-  color: #66805f;
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.34);
-  overflow: hidden;
-}
-
-.status-box {
-  top: 60px;
-  height: 225px;
-  display: flex;
-  align-items: flex-start;
-  justify-content: center;
-  padding: 10px;
-}
-
-.status-box p,
-.more-info-box p,
-.more-info-box h2 {
-  margin: 0;
-  text-align: center;
-  font-weight: 400;
-}
-
-.status-box p {
-  font-size: 9px;
-  line-height: 1.25;
-}
-
-.image-box {
-  top: 305px;
-  height: 218px;
-  background:
-    linear-gradient(90deg, rgba(80, 123, 88, 0.14) 1px, transparent 1px),
-    linear-gradient(rgba(80, 123, 88, 0.14) 1px, transparent 1px),
-    #f3efcf;
-  background-size: 18px 18px;
-}
-
-.more-info-box {
-  top: 542px;
-  height: 138px;
-  padding: 9px 10px;
-}
-
-.more-info-box h2 {
-  margin-bottom: 13px;
-  font-size: 10px;
-  line-height: 1.1;
-}
-
-.more-info-box p {
-  margin-bottom: 7px;
-  font-size: 7px;
-  line-height: 1.15;
-}
-
-.more-info-divider {
-  height: 2px;
-  margin: 5px 2px 8px;
-  background: #66805f;
 }
 
 .cat {
@@ -207,10 +168,28 @@
   background-color: transparent;
   background-repeat: no-repeat;
   background-size: 200% 100%;
+  transform: scale(1);
+  transform-origin: center bottom;
 }
 
 .cat-down-blink {
   animation: cat-blink 2.8s steps(1) infinite;
+}
+
+.cat-down-blink.is-animating {
+  animation:
+    cat-blink 2.8s steps(1) infinite,
+    cat-hover-grow 220ms ease-out forwards;
+}
+
+.cat-down-blink.is-returning {
+  animation:
+    cat-blink 2.8s steps(1) infinite,
+    cat-hover-shrink 180ms ease-out forwards;
+}
+
+.cat-down-blink.is-hovered {
+  transform: scale(1.01);
 }
 
 .sheet-music {
@@ -237,6 +216,46 @@
   }
 }
 
+@keyframes clover-hover-grow {
+  0% {
+    transform: scale(1);
+  }
+
+  100% {
+    transform: scale(1.04);
+  }
+}
+
+@keyframes clover-hover-shrink {
+  0% {
+    transform: scale(1.04);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes cat-hover-grow {
+  0% {
+    transform: scale(1);
+  }
+
+  100% {
+    transform: scale(1.01);
+  }
+}
+
+@keyframes cat-hover-shrink {
+  0% {
+    transform: scale(1.01);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
 @media (max-width: 760px) {
   .link-info-panel {
     top: 130px;
@@ -258,39 +277,6 @@
     font-size: 7px;
   }
 
-  .panel-content-column {
-    display: contents;
-  }
-
-  .panel-box {
-    right: 10px;
-    width: calc(100vw - 150px);
-    max-width: 230px;
-  }
-
-  .status-box {
-    top: 130px;
-    height: 64px;
-  }
-
-  .image-box {
-    top: 204px;
-    height: 190px;
-  }
-
-  .more-info-box {
-    top: 404px;
-    height: 126px;
-  }
-
-  .status-box p,
-  .more-info-box h2 {
-    font-size: 8px;
-  }
-
-  .more-info-box p {
-    font-size: 6px;
-  }
 }
 
 @keyframes sheet-music-play {
