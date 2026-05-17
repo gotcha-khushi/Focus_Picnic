@@ -1,1 +1,799 @@
+.picnic-page {
+  position: relative;
+  width: 100vw;
+  max-width: 100vw;
+  min-height: max(100vh, 61.26vw);
+  background-image: url("/assets/focus picnic bg.png");
+  background-position: top left;
+  background-repeat: no-repeat;
+  background-size: 100% auto;
+}
 
+.picnic-scroll-space {
+  position: relative;
+  --show-ada-forward-compare: 0;
+  min-height: max(100vh, 61.26vw);
+}
+
+.picnic-room-code-badge {
+  position: fixed;
+  top: 18px;
+  left: 18px;
+  z-index: 12;
+  padding: 8px 5px;
+  box-sizing: border-box;
+  border: 3px solid #64d7b7;
+  border-radius: 10px;
+  background: #e4fffa;
+  box-shadow: 5px 5px 0 rgba(95, 175, 212, 0.22);
+  color: #4fa4ce;
+  font-family: "Better VCR", monospace;
+  font-size: 15px;
+  line-height: 1;
+  white-space: nowrap;
+  user-select: none;
+}
+
+.picnic-chat-box {
+  position: fixed;
+  bottom: -1px;
+  left: 28px;
+  z-index: 10;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  width: 350px;
+  height: 230px;
+  padding-bottom: 0px;
+  box-sizing: border-box;
+  border: 3px solid #6bbce2;
+  border-radius: 14px;
+  background: #a9daf3;
+  color: #45aad8;
+  font-family: "Better VCR", "Press Start 2P", monospace;
+  user-select: none;
+  transition: transform 300ms ease;
+}
+
+.picnic-chat-box.is-minimized {
+  transform: translateY(176px);
+}
+
+.picnic-chat-box-controls {
+  position: absolute;
+  top: 5px;
+  right: 12px;
+  z-index: 2;
+}
+
+.picnic-chat-box-control {
+  width: 28px;
+  height: 30px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  filter: drop-shadow(3px 3px 0 rgba(98, 181, 220, 0.28));
+  cursor: pointer;
+}
+
+.picnic-chat-box-control img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: contain;
+  image-rendering: auto;
+  pointer-events: none;
+}
+
+.picnic-chat-box-control:active {
+  transform: translate(2px, 2px);
+  filter: drop-shadow(1px 1px 0 rgba(98, 181, 220, 0.28));
+}
+
+.picnic-chat-box-banner {
+  position: absolute;
+  top: 16px;
+  left: 50%;
+  z-index: 2;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: #45aad8;
+  font-family: "Press Start 2P", monospace;
+  font-size: 17px;
+  font-weight: 700;
+  line-height: 1;
+  cursor: default;
+  transform: translateX(-50%);
+}
+
+.picnic-chat-box.is-minimized .picnic-chat-box-banner {
+  top: 0;
+  left: 0;
+  display: grid;
+  place-items: center;
+  width: 100%;
+  height: 54px;
+  cursor: pointer;
+  transform: none;
+}
+
+.picnic-chat-box-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 10px;
+  width: 335px;
+  height: 170px;
+  padding: 22px 18px;
+  box-sizing: border-box;
+  border: 3px solid #6bbce2;
+  border-radius: 3px;
+  background: #e8f6fb;
+}
+
+.picnic-chat-box-body p {
+  margin: 0;
+  color: #5aaed8;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 1.15;
+  white-space: nowrap;
+}
+
+.picnic-chat-box-body span {
+  color: #45aad8;
+  font-weight: 700;
+}
+
+.picnic-musicbox {
+  position: fixed;
+  top: 160px;
+  right: 0px;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  width: 330px;
+  height: 80px;
+  padding-left: 18px;
+  box-sizing: border-box;
+  border: 3px solid #4d9bae;
+  border-radius: 14px;
+  background:
+    linear-gradient(
+      90deg,
+      #78c7d6 0%,
+      #86d4d2 42%,
+      #b8ecc4 72%,
+      #eef6a8 100%
+    );
+  box-shadow: 5px 5px 0 rgba(65, 137, 154, 0.18);
+}
+
+.picnic-musicbox-cd {
+  width: 65px;
+  height: 65px;
+  display: block;
+  object-fit: contain;
+  image-rendering: auto;
+  pointer-events: none;
+  transform-origin: center;
+  animation: musicbox-cd-spin 8s linear infinite;
+  animation-play-state: paused;
+}
+
+.picnic-musicbox.is-playing .picnic-musicbox-cd {
+  animation-play-state: running;
+}
+
+.picnic-musicbox-controls {
+  position: absolute;
+  top: 50%;
+  right: 21px;
+  width: 176px;
+  height: 48px;
+  transform: translateY(-50%);
+}
+
+.picnic-musicbox-button {
+  position: absolute;
+  top: 0;
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  padding: 0;
+  box-sizing: border-box;
+  border: 3px solid #4d9bae;
+  border-radius: 50%;
+  background: #ffffff;
+  box-shadow: 4px 4px 0 rgba(65, 137, 154, 0.22);
+  cursor: pointer;
+}
+
+.picnic-musicbox-previous {
+  left: -30px;
+}
+
+.picnic-musicbox-next {
+  right: 0;
+}
+
+.picnic-musicbox-play-button {
+  position: absolute;
+  top: 0;
+  left: 50px;
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  padding: 0;
+  box-sizing: border-box;
+  border: 3px solid #4d9bae;
+  border-radius: 10px;
+  background: #ffffff;
+  box-shadow: 4px 4px 0 rgba(65, 137, 154, 0.22);
+  cursor: pointer;
+}
+
+.picnic-musicbox-play-icon {
+  display: block;
+  width: 0;
+  height: 0;
+  margin-left: 4px;
+  border-top: 11px solid transparent;
+  border-bottom: 11px solid transparent;
+  border-left: 17px solid #4d9bae;
+}
+
+.picnic-musicbox-play-button.is-playing .picnic-musicbox-play-icon {
+  width: 18px;
+  height: 22px;
+  margin-left: 0;
+  border: 0;
+  background:
+    linear-gradient(
+      90deg,
+      #4d9bae 0 35%,
+      transparent 35% 65%,
+      #4d9bae 65% 100%
+    );
+}
+
+.picnic-musicbox-button img {
+  display: block;
+  width: 23px;
+  height: auto;
+  object-fit: contain;
+  image-rendering: auto;
+  pointer-events: none;
+}
+
+.picnic-musicbox-button:hover,
+.picnic-musicbox-play-button:hover {
+  background: #f8feff;
+}
+
+.picnic-musicbox-button:active,
+.picnic-musicbox-play-button:active {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0 rgba(65, 137, 154, 0.22);
+}
+
+@keyframes musicbox-cd-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.picnic-userbox {
+  position: fixed;
+  top: 250px;
+  right: 0px;
+  z-index: 10;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  width: 330px;
+  height: 230px;
+  padding-bottom: 10px;
+  box-sizing: border-box;
+  border: 3px solid #4d9bae;
+  border-radius: 14px;
+  background:
+    linear-gradient(
+      90deg,
+      #78c7d6 0%,
+      #86d4d2 42%,
+      #b8ecc4 72%,
+      #eef6a8 100%
+    );
+  color: #4b96a4;
+  font-family: "Press Start 2P", monospace;
+  user-select: none;
+}
+
+.picnic-userbox-controls {
+  position: absolute;
+  top: 5px;
+  right: 12px;
+  z-index: 2;
+}
+
+.picnic-userbox-control {
+  width: 27px;
+  height: 30px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  filter: drop-shadow(3px 3px 0 rgba(65, 137, 154, 0.24));
+  cursor: pointer;
+}
+
+.picnic-userbox-control img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: contain;
+  image-rendering: auto;
+  pointer-events: none;
+}
+
+.picnic-userbox-control:active {
+  transform: translate(2px, 2px);
+  filter: drop-shadow(1px 1px 0 rgba(65, 137, 154, 0.24));
+}
+
+.picnic-userbox-hearts {
+  position: absolute;
+  top: 12px;
+  left: 50%;
+  z-index: 2;
+  width: 84px;
+  transform: translateX(-50%);
+  pointer-events: none;
+}
+
+.picnic-userbox-heart {
+  position: absolute;
+  display: block;
+  width: 28px;
+  height: 32px;
+}
+
+.userbox-heart-one {
+  left: 0;
+}
+
+.userbox-heart-two {
+  left: 28px;
+}
+
+.userbox-heart-three {
+  left: 56px;
+}
+
+.picnic-userbox-heart-block {
+  position: absolute;
+  display: block;
+  width: 6px;
+  height: 14px;
+  background: #c7f6ff;
+}
+
+.userbox-heart-two .picnic-userbox-heart-block {
+  background: #c7f6ff;
+}
+
+.userbox-heart-three .picnic-userbox-heart-block {
+  background: #eef6a8;
+}
+
+.picnic-userbox-heart-block.block-one {
+  top: 0;
+  left: 0;
+}
+
+.picnic-userbox-heart-block.block-two {
+  top: 6px;
+  left: 5.8px;
+}
+
+.picnic-userbox-heart-block.block-three {
+  top: 0;
+  left: 11.6px;
+}
+
+.picnic-userbox-body {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  place-items: center;
+  gap: 12px;
+  width: 335px;
+  height: 170px;
+  padding: 16px 18px 18px;
+  box-sizing: border-box;
+  border: 3px solid #70c58c;
+  border-radius: 3px;
+  background: #f8feff;
+}
+
+.picnic-userbox-info-card {
+  display: grid;
+  place-items: center;
+  gap: 6px;
+  width: 100%;
+  height: 100%;
+  padding: 14px;
+  box-sizing: border-box;
+  border: 3px solid transparent;
+  border-radius: 6px;
+  background:
+    linear-gradient(#f8feff, #f8feff) padding-box,
+    linear-gradient(90deg, #78c7d6, #b8ecc4, #eef6a8) border-box;
+}
+
+.picnic-userbox-body p {
+  margin: 0;
+  font-size: 9px;
+  line-height: 1;
+}
+
+.picnic-userbox-body .picnic-userbox-username {
+  color: #438da1;
+  font-family: "Better VCR", monospace;
+  font-size: 20px;
+  line-height: 1;
+}
+
+.picnic-userbox-body strong {
+  color: #438da1;
+  font-size: 40px;
+  line-height: 1;
+}
+
+.picnic-timer-mode {
+  color: #5ca6a8;
+  font-family: "Better VCR", monospace;
+  font-size: 18px;
+  line-height: 1;
+}
+
+.picnic-ada-walker {
+  position: absolute;
+  left: 1055px;
+  top: 150px;
+  --ada-walk-x: 0px;
+  --ada-walk-y: 120px;
+  z-index: 2;
+  display: block;
+  width: 6.8vw;
+  aspect-ratio: 287 / 513;
+  background-image: url("/assets/ada walking forward sprite.png");
+  background-repeat: no-repeat;
+  background-size: 300% 200%;
+  background-position: 0 0;
+  image-rendering: auto;
+  pointer-events: none;
+  transform: translate(-50%, 0);
+  animation:
+    ada-walk-path 4s linear forwards,
+    ada-walk-steps 720ms steps(1) infinite;
+}
+
+.picnic-ada-left-sprite::before {
+  content: "";
+  position: absolute;
+  left: 15%;
+  bottom: 10%;
+  z-index: 0;
+  width: 70%;
+  height: 15%;
+  border-radius: 50%;
+  background: #1e522b6e;
+  transform: rotate(-3deg);
+  pointer-events: none;
+}
+
+.picnic-ada-walker.is-standing {
+  opacity: var(--show-ada-forward-compare);
+  background-position: 50% 0;
+  transform: translate(
+    calc(-50% + var(--ada-walk-x)),
+    var(--ada-walk-y)
+  );
+  animation: none;
+}
+
+.picnic-avi-walker {
+  position: absolute;
+  left: 1065px;
+  top: 140px;
+  --avi-walk-x: 0px;
+  --avi-walk-y: 120px;
+  z-index: 2;
+  display: block;
+  width: 7.4vw;
+  aspect-ratio: 280 / 466;
+  image-rendering: auto;
+  pointer-events: none;
+  transform: translate(-50%, 0);
+  animation: avi-walk-path 4s linear forwards;
+}
+
+.picnic-avi-walker::before {
+  content: "";
+  position: absolute;
+  left: 15%;
+  bottom: -1%;
+  z-index: 0;
+  width: 70%;
+  height: 15%;
+  border-radius: 50%;
+  background: #5b3f2657;
+  transform: rotate(-3deg);
+  pointer-events: none;
+}
+
+.picnic-avi-walker::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background-image: url("/assets/avi walking forward sprite.png");
+  background-repeat: no-repeat;
+  background-size: 100% 400%;
+  background-position: 0 0;
+  animation: avi-walk-steps 720ms steps(1) infinite;
+}
+
+.picnic-avi-walker.is-standing {
+  transform: translate(
+    calc(-50% + var(--avi-walk-x)),
+    var(--avi-walk-y)
+  );
+  animation: none;
+}
+
+.picnic-avi-walker.is-standing::after {
+  background-position: 0 33.333%;
+  animation: none;
+}
+
+.picnic-ada-left-sprite {
+  position: absolute;
+  left: 1055px;
+  top: 150px;
+  --ada-left-start-x: 0px;
+  --ada-left-start-y: 120px;
+  --ada-left-slide-x: -200px;
+  --ada-left-slide-y: 0px;
+  z-index: 3;
+  display: block;
+  width: 7.2vw;
+  aspect-ratio: 291 / 513;
+  image-rendering: auto;
+  pointer-events: none;
+  transform: translate(calc(-50% + var(--ada-left-start-x)), var(--ada-left-start-y));
+  animation: ada-left-slide 4s linear forwards;
+}
+
+.picnic-ada-left-sprite::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background-image: url("/assets/ada walking left sprite.png");
+  background-repeat: no-repeat;
+  background-size: 100% 400%;
+  background-position: 0 33.333%;
+  animation: ada-left-steps 720ms steps(1) infinite;
+}
+
+.picnic-ada-left-sprite.is-standing {
+  aspect-ratio: 286 / 513;
+  transform: translate(
+    calc(-50% + var(--ada-left-start-x) + var(--ada-left-slide-x)),
+    calc(var(--ada-left-start-y) + var(--ada-left-slide-y))
+  );
+  animation: none;
+}
+
+.picnic-ada-left-sprite.is-standing::after {
+  background-image: url("/assets/ada standing.png");
+  background-size: contain;
+  background-position: center;
+  animation: none;
+}
+
+.picnic-avi-left-sprite {
+  position: absolute;
+  left: 1050px;
+  top: 140px;
+  --avi-left-start-x: 0px;
+  --avi-left-start-y: 120px;
+  --avi-left-slide-x: -200px;
+  --avi-left-slide-y: 0px;
+  z-index: 3;
+  display: block;
+  width: 7.8vw;
+  aspect-ratio: 281 / 487;
+  image-rendering: auto;
+  pointer-events: none;
+  transform: translate(calc(-50% + var(--avi-left-start-x)), var(--avi-left-start-y));
+  animation: avi-left-slide 4s linear forwards;
+}
+
+.picnic-avi-left-sprite::before {
+  content: "";
+  position: absolute;
+  left: 20%;
+  bottom: 8%;
+  z-index: 0;
+  width: 70%;
+  height: 15%;
+  border-radius: 50%;
+  background: #1e522b6e;
+  transform: rotate(-3deg);
+  pointer-events: none;
+}
+
+.picnic-avi-left-sprite::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background-image: url("/assets/avi walking left.png");
+  background-repeat: no-repeat;
+  background-size: 400% 100%;
+  background-position: 0 0;
+  animation: avi-left-steps 720ms steps(1) infinite;
+}
+
+.picnic-avi-left-sprite.is-standing {
+  transform: translate(
+    calc(-50% + var(--avi-left-start-x) + var(--avi-left-slide-x)),
+    calc(var(--avi-left-start-y) + var(--avi-left-slide-y))
+  );
+  animation: none;
+}
+
+.picnic-avi-left-sprite.is-standing::after {
+  background-position: 66.666% 0;
+  animation: none;
+}
+
+@keyframes ada-walk-path {
+  0% {
+    transform: translate(-50%, 0);
+  }
+
+  100% {
+    transform: translate(
+      calc(-50% + var(--ada-walk-x)),
+      var(--ada-walk-y)
+    );
+  }
+}
+
+@keyframes ada-walk-steps {
+  0%,
+  100% {
+    background-position: 0 0;
+  }
+
+  25% {
+    background-position: 50% 0;
+  }
+
+  50% {
+    background-position: 100% 0;
+  }
+
+  75% {
+    background-position: 50% 0;
+  }
+}
+
+@keyframes avi-walk-path {
+  0% {
+    transform: translate(-50%, 0);
+  }
+
+  100% {
+    transform: translate(
+      calc(-50% + var(--avi-walk-x)),
+      var(--avi-walk-y)
+    );
+  }
+}
+
+@keyframes avi-walk-steps {
+  0%,
+  100% {
+    background-position: 0 0;
+  }
+
+  25% {
+    background-position: 0 33.333%;
+  }
+
+  50% {
+    background-position: 0 66.666%;
+  }
+
+  75% {
+    background-position: 0 100%;
+  }
+}
+
+@keyframes ada-left-slide {
+  0% {
+    transform: translate(
+      calc(-50% + var(--ada-left-start-x)),
+      var(--ada-left-start-y)
+    );
+  }
+
+  100% {
+    transform: translate(
+      calc(-50% + var(--ada-left-start-x) + var(--ada-left-slide-x)),
+      calc(var(--ada-left-start-y) + var(--ada-left-slide-y))
+    );
+  }
+}
+
+@keyframes avi-left-slide {
+  0% {
+    transform: translate(
+      calc(-50% + var(--avi-left-start-x)),
+      var(--avi-left-start-y)
+    );
+  }
+
+  100% {
+    transform: translate(
+      calc(-50% + var(--avi-left-start-x) + var(--avi-left-slide-x)),
+      calc(var(--avi-left-start-y) + var(--avi-left-slide-y))
+    );
+  }
+}
+
+@keyframes ada-left-steps {
+  0%,
+  100% {
+    background-position: 0 0;
+  }
+
+  25% {
+    background-position: 0 33.333%;
+  }
+
+  50% {
+    background-position: 0 66.666%;
+  }
+
+  75% {
+    background-position: 0 100%;
+  }
+}
+
+@keyframes avi-left-steps {
+  0%,
+  100% {
+    background-position: 0 0;
+  }
+
+  25% {
+    background-position: 33.333% 0;
+  }
+
+  50% {
+    background-position: 66.666% 0;
+  }
+
+  75% {
+    background-position: 100% 0;
+  }
+}
